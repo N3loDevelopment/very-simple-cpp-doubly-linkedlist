@@ -26,9 +26,34 @@ void addToList(const std::string &val)
         tail = n;
         return;
     }
-    tail->next;
-    n->prev;
+    tail->next = n;
+    n->prev = tail;
+    n->next = nullptr;
     tail = n;
+}
+
+void removeFromList(const std::string &val)
+{
+    Node *curr = head;
+    while (curr)
+    {
+        if (curr->data == val)
+        {
+            if (curr->prev)
+                curr->prev->next = curr->next;
+            else
+                head = curr->next;
+
+            if (curr->next)
+                curr->next->prev = curr->prev;
+            else
+                tail = curr->prev;
+
+            delete curr;
+            return;
+        }
+        curr = curr->next;
+    }
 }
 
 void getList()
