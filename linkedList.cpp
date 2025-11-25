@@ -58,7 +58,7 @@ void removeIndexFromList(int &index)
     Node *curr = head;
     int i = 0;
 
-    while (curr->next && i < index)
+    while (curr && i < index)
     {
         curr = curr->next;
         index++;
